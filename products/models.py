@@ -1,5 +1,7 @@
 from django.db import models
 
+from django.shortcuts import reverse
+
 
 class Products(models.Model):
     title = models.CharField(max_length=180)
@@ -13,3 +15,6 @@ class Products(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('product_detail', args=[self.pk])

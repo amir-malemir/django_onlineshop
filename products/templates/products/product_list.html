@@ -3,9 +3,9 @@
 {% block page_title %}Products{%  endblock page_title %}
 
 {% block content %}
-    <h1>produtcs list</h1>
+    <h1>products list</h1>
     {% for product in products %}
-    	<h2>{{ product.title }}</h2>
+        <a href="{{ product.get_absolute_url }}"><h2>{{ product.title }}</h2></a>
     {% endfor %}
 
 {% endblock content %}
