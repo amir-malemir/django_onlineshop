@@ -160,7 +160,7 @@
                                                         <form action="{% url 'comment_create' product.id %}" method="post">
                                                             {% csrf_token %}
                                                             {{ comment_form|crispy }}
-                                                            <input type="submit" value="ارسال">
+                                                            <input type="submit" value={% trans 'Send' %}>
                                                         </form>
                                                     </div>
                                                 </div>
