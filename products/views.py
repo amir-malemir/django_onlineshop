@@ -1,7 +1,16 @@
 from django.views import generic
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
+from django.contrib import messages
+
 from .models import Products, Comments
 from .forms import CommentForm
+
+
+def test_messages(request):
+    messages.success(request, 'Success Message')
+    messages.warning(request, 'Alert Message')
+    messages.error(request, 'Error Message')
+    return render(request, 'products/test.html')
 
 
 class ProductListView(generic.ListView):
