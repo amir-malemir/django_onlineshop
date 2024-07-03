@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'rosetta',
     'crispy_forms',
     'crispy_bootstrap5',
-    'cart.apps.CartConfig'
+    'cart.apps.CartConfig',
 
     'accounts',
     'pages',
