@@ -45,16 +45,19 @@
                                     <span class="money old-price text-danger">۲۱۰,۰۰۰ تومان</span>
                                 </div>
                                 <div class="product-action d-flex align-items-sm-center align-content-center mb--30">
-                                    <div class="quantity-wrapper d-flex justify-content-start">
-                                        <div class="quantity">
-                                            <input type="number" class="quantity-input" name="qty" id="qty" value="1"
-                                                   min="1">
+                                    <form action=" {% url 'cart:cart_add' product.id %} " method="post">
+                                        {% csrf_token %}
+                                        <div class="quantity-wrapper d-flex justify-content-start">
+                                            <div class="quantity">
+                                                <input type="number" class="quantity-input" name="quantity" id="qty"
+                                                       value="1" min="1" max="30">
+                                            </div>
+                                            <button type="submit"
+                                                    class="btn btn-small btn-bg-red btn-color-white btn-hover-2">
+                                                {% trans 'Add To Cart' %}
+                                            </button>
                                         </div>
-                                    </div>
-                                    <button type="button" class="btn btn-small btn-bg-red btn-color-white btn-hover-2"
-                                            onclick="window.location.href='cart.html'">
-                                        {% trans 'Add To Cart' %}
-                                    </button>
+                                    </form>
                                 </div>
                                 <div class="product-footer-meta mt-5 pt-5">
                                     <p><span class="m-0">{% trans 'Categories' %}:</span>
@@ -75,7 +78,8 @@
                                        data-toggle="tab" href="#nav-description" role="tab" aria-selected="true">
                                         <span>{% trans 'Product Description' %}</span>
                                     </a>
-                                    <a class="m-0 product-data-tab__link nav-link" id="nav-info-tab" data-toggle="tab"
+                                    <a class="m-0 product-data-tab__link nav-link" id="nav-info-tab"
+                                       data-toggle="tab"
                                        href="#nav-info" role="tab" aria-selected="true">
                                         <span>{% trans 'Ability' %}</span>
                                     </a>
@@ -120,7 +124,8 @@
                                     <div class="tab-pane fade" id="nav-reviews" role="tabpanel"
                                          aria-labelledby="nav-reviews-tab">
                                         <div class="product-reviews">
-                                            <h3 class="review__title">{{ product.comments.all|only_active_comments|length }} نظر برای {{product.title}}</h3>
+                                            <h3 class="review__title">{{ product.comments.all|only_active_comments|length }}
+                                                نظر برای {{ product.title }}</h3>
                                             <ul class="review__list">
                                                 {% for comment in product.comments.all|only_active_comments %}
                                                     <li class="review__item">
@@ -128,7 +133,8 @@
                                                             <div class="review__text">
                                                                 <div class="d-flex flex-sm-row flex-row">
                                                                     <img src="{% static 'img/others/comment-1.jpg' %}"
-                                                                         alt="Review Avatar" class="review__avatar p-3">
+                                                                         alt="Review Avatar"
+                                                                         class="review__avatar p-3">
                                                                     <div>
                                                                         <div class="review__meta">
                                                                             <span class="review__published-date">{{ comment.datetime_created }}</span>
@@ -157,7 +163,8 @@
                                                     <div class="col-lg-8 m-auto">
                                                         <span class="reply-title pull-right">{% trans 'Write your comment' %}</span>
                                                         <br>
-                                                        <form action="{% url 'comment_create' product.id %}" method="post">
+                                                        <form action="{% url 'comment_create' product.id %}"
+                                                              method="post">
                                                             {% csrf_token %}
                                                             {{ comment_form|crispy }}
                                                             <input type="submit" value={% trans 'Send' %}>
@@ -352,8 +359,10 @@
                                     </div>
                                     <h3 class="product-title mb--20">لباس تابستانی</h3>
                                     <p class="product-short-description mb--25">Donec accumsan auctor iaculis. Sed
-                                        suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices
-                                        justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula
+                                        suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus,
+                                        ultrices
+                                        justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in
+                                        vehicula
                                         lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit
                                         arcu.</p>
                                     <div class="product-price-wrapper mb--25">
@@ -372,19 +381,22 @@
                                                     </a>
                                                 </div>
                                                 <div class="variation">
-                                                    <a class="product-color-variation-btn black" data-toggle="tooltip"
+                                                    <a class="product-color-variation-btn black"
+                                                       data-toggle="tooltip"
                                                        data-placement="top" title="Black">
                                                         <span class="product-color-variation-label">Black</span>
                                                     </a>
                                                 </div>
                                                 <div class="variation">
-                                                    <a class="product-color-variation-btn pink" data-toggle="tooltip"
+                                                    <a class="product-color-variation-btn pink"
+                                                       data-toggle="tooltip"
                                                        data-placement="top" title="Pink">
                                                         <span class="product-color-variation-label">Pink</span>
                                                     </a>
                                                 </div>
                                                 <div class="variation">
-                                                    <a class="product-color-variation-btn blue" data-toggle="tooltip"
+                                                    <a class="product-color-variation-btn blue"
+                                                       data-toggle="tooltip"
                                                        data-placement="top" title="Blue">
                                                         <span class="product-color-variation-label">Blue</span>
                                                     </a>
@@ -395,7 +407,8 @@
                                             <p class="variation-label">Size:</p>
                                             <div class="product-size-variation variation-wrapper">
                                                 <div class="variation">
-                                                    <a class="product-size-variation-btn selected" data-toggle="tooltip"
+                                                    <a class="product-size-variation-btn selected"
+                                                       data-toggle="tooltip"
                                                        data-placement="top" title="S">
                                                         <span class="product-size-variation-label">S</span>
                                                     </a>
@@ -426,7 +439,8 @@
                                         <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
                                             <label class="quantity-label" for="quick-qty">Quantity:</label>
                                             <div class="quantity">
-                                                <input type="number" class="quantity-input" name="qty" id="quick-qty"
+                                                <input type="number" class="quantity-input" name="qty"
+                                                       id="quick-qty"
                                                        value="1" min="1">
                                             </div>
                                         </div>
