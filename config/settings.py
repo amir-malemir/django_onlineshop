@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'jalali_date',
     'allauth',
     'allauth.account',
     'rosetta',
@@ -51,6 +52,7 @@ INSTALLED_APPS = [
     'accounts',
     'pages',
     'products',
+    'persian_translate',
 ]
 
 SITE_ID = 1
