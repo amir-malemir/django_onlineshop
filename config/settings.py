@@ -13,6 +13,7 @@ from django.contrib.messages import constants as messages_constants
 import os
 from pathlib import Path
 from environs import Env
+
 # for environment variables
 env = Env()
 env.read_env()
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'cart.apps.CartConfig',
+    'django.contrib.humanize',
 
     'accounts',
     'pages',
@@ -166,7 +168,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
