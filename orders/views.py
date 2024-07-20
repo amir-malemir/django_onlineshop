@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
-
+from .forms import OrderForm
 def order_create_view(request):
-    return render(request, 'order/order_create.html')
+    return render(request, 'order/order_create.html', context={
+        'form': OrderForm()
+    })
