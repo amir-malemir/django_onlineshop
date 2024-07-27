@@ -14,12 +14,23 @@ class Order(models.Model):
 
     order_notes = models.CharField(_('Order Notes'), max_length=700, blank=True)
 
+    authority = models.CharField(_('Authority'), max_length=255, blank=True)
+    ref_id = models.CharField(_('Ref ID'), max_length=50, blank=True)
+    zarinpal_data = models.TextField(_('Zarinpal'), blank=True)
+
     datetime_created = models.DateTimeField(_('created'), auto_now_add=True)
     datetime_modified = models.DateTimeField(_('modified'), auto_now=True)
 
     def __str__(self):
         return f'Order {self.id}'
 
+    def get_total_price(self):
+        # result = 0
+        # for item in self.items():
+        #     result += item.price * item.quantity
+        # return result
+        # convert uo code to this short code
+        return sum(item.quantity * item.price for item in self.items.all())
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')

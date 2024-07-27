@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'products',
     'persian_translate',
     'orders',
+    'payment',
 ]
 
 SITE_ID = 1
@@ -197,3 +198,6 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 MESSAGE_TAGS = {
     messages_constants.ERROR: 'danger'
 }
+
+# Payment
+ZARINPAL_MERCHANT_ID = env('DJANGO_ZARINPAL_MERCHANT_ID')
